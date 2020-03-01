@@ -4,6 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     background: #ecf3ff;
+    color: #333
 }
 
 h1 {
@@ -19,6 +20,7 @@ h1 {
 
 input {
     width: 100%;
+    margin-bottom: 20px;
     padding: 6px 20px;
     box-shadow: 5px 5px 10px 0px #d6d6d6;
     background: none;
