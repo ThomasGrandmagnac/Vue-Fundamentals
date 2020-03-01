@@ -7,44 +7,58 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div id="shopping-list" class="shoppingList">
+    <div id="to-do-list" class="toDoList">
         <header>
             <h1>{{ header.toLocaleUpperCase() }}</h1>
             <button v-if="state === 'default'" @click="changeState('edit')">Show the form</button>
             <button class="cancel" v-else @click="changeState('default')">Hide the form</button>
         </header>
         <div v-if="state === 'edit'" class="addItemForm">
-            <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
-            <button :disabled="newItem.length === 0" @click="saveItem">Save</button>
+            <div>
+                <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
+                <button :disabled="newItem.length === 0" @click="saveItem">Save</button>
+            </div>
+            <p><small>{{ characterCount }}/200</small></p>
         </div>
+        <hr>
         <ul>
-            <li v-for="item in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">{{ item.label }}</li>
+            <li v-for="item in reversedItems" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">{{ item.label }}</li>
         </ul>
         <p v-if="items.length === 0">Nice job! You've bought all your items.</p>
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
         var shoppingList = new Vue({
-            el: '#shopping-list',
+            el: '#to-do-list',
             data: {
                 state: 'default',
-                header: 'shopping list app',
+                header: 'to-do list',
                 newItem: '',
                 items: [
                     {
-                        label: '10 party hats',
+                        label: 'Learn JavaScript',
                         purchased: false,
                     },
                     {
-                        label: '2 board games',
+                        label: 'Learn Vue.js',
                         purchased: true,
                     },
                     {
-                        label: '20 cups',
+                        label: 'Learn UX',
                         purchased: false,
                     },
                 ]
             },
+            // When you need to change the presentation of existing data, you will use computed properties.
+            computed: {
+                characterCount() {
+                    return this.newItem.length
+                },
+                reversedItems() {
+                    return this.items.slice(0).reverse();
+                }
+            },
+            // When you need to change data, you will use methods.
             methods: {
                 saveItem: function() {
                     this.items.push({
