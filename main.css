@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #ecf3ff;
+}
+
+h1 {
+    font-family: sans-serif;
+}
+
+.shoppingList {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 4px;
+    box-shadow: 5px 5px 10px 0px #d6d6d6;
+}
+
+input {
+    width: 100%;
+    padding: 6px 20px;
+    box-shadow: 5px 5px 10px 0px #d6d6d6;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
