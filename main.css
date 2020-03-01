@@ -99,4 +99,11 @@ ul {
 
 li {
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+li.strikeout {
+    color: #dcdcdc;
+    text-decoration: line-through;
 }
